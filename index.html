@@ -52,6 +52,12 @@ body{background:radial-gradient(circle at 50% 30%,#fff0f7,#ffc7e0 75%);font-fami
 .k span{opacity:.5}
 #msg{margin:12px 0;padding:10px;border:2px solid #ffc2dc;border-radius:12px;font-weight:700;font-size:14px}
 #rain{border:0;border-radius:20px;padding:10px 18px;background:var(--p);color:#fff;font:700 13px Quicksand,sans-serif;cursor:pointer}
+#lb{position:fixed;inset:0;z-index:100;background:#000;display:none;align-items:center;justify-content:center;overflow:hidden}
+#lb.on{display:flex;animation:zin .45s ease}
+@keyframes zin{from{opacity:0;transform:scale(.5)}to{opacity:1;transform:none}}
+#lbi{object-fit:contain;transition:transform .3s}
+#lbr{position:absolute;right:14px;top:calc(14px + env(safe-area-inset-top,0px));width:44px;height:44px;border:0;border-radius:50%;background:#ffffff33;color:#fff;font-size:22px;cursor:pointer;z-index:2}
+#lbt{position:absolute;left:0;right:0;bottom:calc(14px + env(safe-area-inset-bottom,0px));text-align:center;color:#fffa;font-size:12px;pointer-events:none}
 </style>
 </head>
 <body>
@@ -79,8 +85,14 @@ body{background:radial-gradient(circle at 50% 30%,#fff0f7,#ffc7e0 75%);font-fami
   <button id="rain">✨ Soo daa Wadnayaal ✨</button>
 </div></div>
 
+<div id="lb"><img id="lbi" alt=""><button id="lbr">↻</button><div id="lbt">Taabo si aad u xidho · ↻ si aad u wareejiso</div></div>
 <script>
 const $=s=>document.querySelector(s);
+const FULL=[5];
+const lb=$('#lb'),lbi=$('#lbi');let rot=0;
+function openLB(src){rot=0;lbi.style.transform='';lbi.style.maxWidth='100vw';lbi.style.maxHeight='100vh';lbi.src=src;lb.classList.add('on')}
+$('#lbr').onclick=e=>{e.stopPropagation();rot=(rot+90)%360;const s=rot%180;lbi.style.transform='rotate('+rot+'deg)';lbi.style.maxWidth=s?'100vh':'100vw';lbi.style.maxHeight=s?'100vw':'100vh'};
+lb.onclick=()=>lb.classList.remove('on');
 // ====== SAWIRADAADA HAL DHIB KU BEDDEL ======
 const PHOTOS=['Screenshot_20261012-021803.jpg','a74adc70eb0c405081d368e913c03e27.jpg','Screenshot_20261019-135211.jpg','IMG-20261029-WA0026.jpg','Screenshot_20261019-141745.jpg','1794161692933.jpg'];
 const MSG=['Waxaad tahay qof gaar ah 💖','Dhoolacadeyntaadu waa iftiin ✨','Boqorad ayaad tahay 👑','Maalin dhalasho oo wacan! 🌷','Saaxiib wanaagsan ayaad tahay 🧸','Waxaad mudan tahay wax kasta oo qurux badan 💄'];
@@ -95,7 +107,17 @@ EMO.forEach((e,i)=>{
   let k=0;
   im.onerror=()=>{if(k<c.length-1){k++;im.src=c[k]}else im.remove()};
   im.src=c[0];
-  t.onclick=()=>{t.classList.toggle('flip');$('#msg').textContent=MSG[i]};
+  t.onclick=()=>{
+    const flipped=t.classList.contains('flip');
+    $('#msg').textContent=MSG[i];
+    if(FULL.includes(i)&&im.isConnected){
+      if(flipped){openLB(im.currentSrc||im.src);return}
+      t.classList.add('flip');
+      setTimeout(()=>openLB(im.currentSrc||im.src),650);
+      return;
+    }
+    t.classList.toggle('flip');
+  };
   grid.appendChild(t);
 });
 
@@ -137,4 +159,3 @@ function rain(n,cols){
 </script>
 </body>
 </html>
-
