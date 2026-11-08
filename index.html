@@ -9,8 +9,10 @@
 :root{--d:#c2185b;--p:#ff5fa2;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 html,body{height:100%;margin:0;overflow:hidden}
-body{background:radial-gradient(circle at 50% 30%,#fff0f7,#ffc7e0 75%);font-family:Quicksand,system-ui,sans-serif;color:var(--d);display:flex;flex-direction:column;align-items:center;justify-content:center}
-#hint{font-weight:700;margin-bottom:18px;text-align:center;padding:0 16px;position:relative;z-index:2}
+#giftScene{position:fixed;inset:0;z-index:2;display:none;box-sizing:border-box;padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px);background:radial-gradient(circle at 50% 30%,#fff0f7,#ffc7e0 75%);font-family:Quicksand,system-ui,sans-serif;color:var(--d);flex-direction:column;align-items:center;justify-content:center}
+#giftScene.on{display:flex;animation:gin .8s ease}
+@keyframes gin{from{opacity:0}to{opacity:1}}
+#ghint{font-weight:700;margin-bottom:18px;text-align:center;padding:0 16px;position:relative;z-index:2}
 #stage{position:relative;z-index:2}
 .box{position:relative;width:240px;height:340px;perspective:800px;cursor:pointer}
 .front{position:absolute;left:0;right:0;bottom:0;height:100px;background:linear-gradient(#fdf3f8,#f1dfe9);border-radius:0 0 14px 14px;box-shadow:0 14px 24px #c2185b33;z-index:4}
@@ -58,10 +60,62 @@ body{background:radial-gradient(circle at 50% 30%,#fff0f7,#ffc7e0 75%);font-fami
 #lbi{object-fit:contain;transition:transform .3s}
 #lbr{position:absolute;right:14px;top:calc(14px + env(safe-area-inset-top,0px));width:44px;height:44px;border:0;border-radius:50%;background:#ffffff33;color:#fff;font-size:22px;cursor:pointer;z-index:2}
 #lbt{position:absolute;left:0;right:0;bottom:calc(14px + env(safe-area-inset-bottom,0px));text-align:center;color:#fffa;font-size:12px;pointer-events:none}
+
+#cakeScene{position:fixed;inset:0;z-index:3;box-sizing:border-box;padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px);background:#ff7a8a;font-family:Quicksand,system-ui,sans-serif;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .5s;user-select:none;-webkit-tap-highlight-color:transparent}
+#cakeScene.bye{opacity:0;pointer-events:none}
+#chint{height:30px;font:italic 22px "Courier New",monospace;color:#fff;opacity:0;animation:fin .6s 5.6s forwards;margin-bottom:10px;text-shadow:0 2px 6px #0002}
+#chint.gone{animation:none;opacity:0;transition:opacity .4s}
+@keyframes fin{to{opacity:1}}
+#wrap{position:relative;width:min(84vw,360px)}
+#glow{position:absolute;left:5%;right:5%;top:-6%;height:46%;background:radial-gradient(ellipse at 50% 55%,#fff3a8cc,#ffd86a55 45%,transparent 72%);opacity:0;animation:fin 1s 4.3s forwards}
+#glow.off{animation:none;opacity:0;transition:opacity .6s}
+#wrap svg{position:relative;display:block;width:100%;height:auto;overflow:visible}
+@keyframes drop{from{transform:translateY(-150px);opacity:0}50%{opacity:1}to{transform:none;opacity:1}}
+.layer,.ic{animation:drop .8s var(--t) cubic-bezier(.3,1.25,.5,1) backwards}
+.cd,.fl{transform-box:fill-box;transform-origin:50% 100%}
+.cd{animation:grow .35s var(--t) backwards}
+@keyframes grow{from{transform:scaleY(0)}}
+.fl{animation:flin .4s var(--t) backwards,flk .35s calc(var(--t) + .4s) ease-in-out infinite alternate}
+@keyframes flin{from{transform:scale(0);opacity:0}}
+@keyframes flk{from{transform:scale(1,1)}to{transform:scale(.88,1.12)}}
+.out .fl{animation:fo .45s calc(var(--i)*.06s) forwards}
+@keyframes fo{to{transform:scale(.05);opacity:0}}
+.sm{opacity:0}
+.out .sm{animation:smk 1.6s calc(var(--i)*.06s + .2s) ease-out}
+@keyframes smk{0%{opacity:.7;transform:translateY(0) scale(1)}100%{opacity:0;transform:translateY(-55px) scale(3)}}
+#cmsg{margin-top:26px;text-align:center;font-weight:700;font-size:28px;line-height:1.3;color:#8c3b4a;opacity:0;animation:fin .8s 1s forwards}
+#go{margin-top:22px;border:0;border-radius:30px;padding:13px 34px;background:#fff;color:#d6336c;font:700 18px Quicksand,sans-serif;box-shadow:0 6px 18px #0003;cursor:pointer;opacity:0;pointer-events:none;transform:scale(.6)}
+#go.show{opacity:1;pointer-events:auto;transform:none;transition:all .5s cubic-bezier(.3,1.5,.5,1)}
+
 </style>
 </head>
 <body>
-<div id="hint">Taabo sanduuqa si aad u furto 🎁</div>
+<!-- 1) KEEGA -->
+<div id="cakeScene">
+<div id="chint">Touch to blow</div>
+<div id="wrap">
+  <div id="glow"></div>
+  <svg id="sv" viewBox="0 0 300 210">
+    <g class="layer" style="--t:.3s"><rect x="25" y="162" width="250" height="38" rx="4" fill="#b88a7b"/><rect x="25" y="162" width="250" height="7" fill="#94675a" opacity=".6"/></g>
+    <g class="layer" style="--t:1s"><rect x="25" y="124" width="250" height="38" rx="4" fill="#b88a7b"/><rect x="25" y="124" width="250" height="7" fill="#94675a" opacity=".6"/></g>
+    <g class="layer" style="--t:1.7s"><rect x="25" y="86" width="250" height="38" rx="4" fill="#b88a7b"/><rect x="25" y="86" width="250" height="7" fill="#94675a" opacity=".6"/></g>
+    <g class="ic" style="--t:2.4s" fill="#fff3d6">
+      <rect x="22" y="76" width="256" height="18" rx="9"/>
+      <rect x="40" y="88" width="14" height="40" rx="7"/><rect x="104" y="88" width="18" height="26" rx="9"/>
+      <rect x="158" y="88" width="14" height="20" rx="7"/><rect x="200" y="88" width="16" height="30" rx="8"/>
+      <rect x="256" y="88" width="14" height="22" rx="7"/>
+    </g>
+    <g id="can"></g>
+    <line x1="10" y1="200" x2="290" y2="200" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+  </svg>
+</div>
+<div id="cmsg">Happy Birthday!<br>Shadia ❤️</div>
+<button id="go">Gudbi ➜</button>
+</div>
+
+<!-- 2) SANDUUQA HADIYADDA -->
+<div id="giftScene">
+<div id="ghint">Taabo sanduuqa si aad u furto 🎁</div>
 <div id="fx"></div><div id="top"></div>
 <div id="stage">
   <div class="box" id="box">
@@ -86,8 +140,36 @@ body{background:radial-gradient(circle at 50% 30%,#fff0f7,#ffc7e0 75%);font-fami
 </div></div>
 
 <div id="lb"><img id="lbi" alt=""><button id="lbr">↻</button><div id="lbt">Taabo si aad u xidho · ↻ si aad u wareejiso</div></div>
+</div>
+
 <script>
 const $=s=>document.querySelector(s);
+
+let h='';
+for(let i=0;i<8;i++){
+  const x=50+i*29;
+  h+='<g class="cd" style="--t:'+(3.1+i*.12)+'s"><rect x="'+(x-3)+'" y="50" width="6" height="30" rx="2" fill="#fff"/><rect x="'+(x-3)+'" y="58" width="6" height="3" fill="#d9e6ff"/><rect x="'+(x-3)+'" y="68" width="6" height="3" fill="#d9e6ff"/></g>';
+  h+='<g class="fl" style="--t:'+(4.2+i*.12)+'s;--i:'+i+'"><ellipse cx="'+x+'" cy="38" rx="4.5" ry="10" fill="#ffc93c"/><ellipse cx="'+x+'" cy="41" rx="2.2" ry="5.5" fill="#fff6a8"/></g>';
+  h+='<circle class="sm" style="--i:'+i+'" cx="'+x+'" cy="34" r="3" fill="#fff"/>';
+}
+$('#can').innerHTML=h;
+
+let ready=false,blown=false;
+setTimeout(()=>ready=true,5600);
+$('#cakeScene').addEventListener('click',e=>{
+  if(!ready||blown||e.target.id==='go')return;
+  blown=true;
+  $('#sv').classList.add('out');
+  $('#glow').classList.add('off');
+  $('#chint').classList.add('gone');
+  setTimeout(()=>$('#go').classList.add('show'),1500);
+});
+$('#go').onclick=()=>{
+  const c=$('#cakeScene');
+  c.classList.add('bye');
+  setTimeout(()=>{c.style.display='none';$('#giftScene').classList.add('on')},500);
+};
+
 const FULL=[5];
 const lb=$('#lb'),lbi=$('#lbi');let rot=0;
 function openLB(src){rot=0;lbi.style.transform='';lbi.style.maxWidth='100vw';lbi.style.maxHeight='100vh';lbi.src=src;lb.classList.add('on')}
@@ -125,7 +207,7 @@ let opened=false;
 $('#box').onclick=()=>{
   if(opened)return;opened=true;
   $('#stage').classList.add('open');
-  $('#hint').textContent='Hadda taabo albumka 💄';
+  $('#ghint').textContent='Hadda taabo albumka 💄';
   setTimeout(burst,450);
 };
 $('#album').onclick=e=>{e.stopPropagation();if(opened)$('#modal').classList.add('on')};
@@ -156,6 +238,7 @@ function rain(n,cols){
     a.onfinish=()=>s.remove();
   }
 }
+
 </script>
 </body>
 </html>
