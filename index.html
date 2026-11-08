@@ -1,1 +1,140 @@
+<!doctype html>
+<html lang="so">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Happy Birthday Shadia</title>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--d:#c2185b;--p:#ff5fa2;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+html,body{height:100%;margin:0;overflow:hidden}
+body{background:radial-gradient(circle at 50% 30%,#fff0f7,#ffc7e0 75%);font-family:Quicksand,system-ui,sans-serif;color:var(--d);display:flex;flex-direction:column;align-items:center;justify-content:center}
+#hint{font-weight:700;margin-bottom:18px;text-align:center;padding:0 16px;position:relative;z-index:2}
+#stage{position:relative;z-index:2}
+.box{position:relative;width:240px;height:340px;perspective:800px;cursor:pointer}
+.front{position:absolute;left:0;right:0;bottom:0;height:100px;background:linear-gradient(#fdf3f8,#f1dfe9);border-radius:0 0 14px 14px;box-shadow:0 14px 24px #c2185b33;z-index:4}
+.rib{position:absolute;left:50%;margin-left:-16px;top:0;bottom:0;width:32px;background:#d6336c}
+.front b{position:absolute;left:50%;top:26px;transform:translateX(-50%);font-size:40px}
+.back{position:absolute;left:0;right:0;bottom:0;height:160px;background:linear-gradient(#ffe9f2,#fbd0e3);border-radius:10px 10px 0 0;z-index:1}
+.lid3d{position:absolute;left:0;right:0;bottom:160px;height:170px;transform-origin:50% 100%;transform:rotateX(-90deg);transition:transform 1s cubic-bezier(.3,1.4,.5,1);z-index:2}
+.open .lid3d{transform:rotateX(6deg)}
+.card{position:absolute;inset:0;background:linear-gradient(#e8438a,#c2185b);border-radius:10px 10px 0 0;display:flex;align-items:center;justify-content:center}
+.card svg{width:200px;height:auto}
+.card p{position:absolute;margin:0;top:46px;width:100%;text-align:center;font:17px/1.5 Pacifico,cursive;color:#d6336c}
+.lidflat{position:absolute;left:-6px;right:-6px;bottom:100px;height:66px;background:linear-gradient(#fff,#ffd3e5);border-radius:8px;box-shadow:0 4px 10px #c2185b33;z-index:5;transition:transform .5s,opacity .5s;transform-origin:50% 0}
+.lidflat .rib{margin-left:-16px}
+.lidflat b{position:absolute;left:50%;top:-24px;transform:translateX(-50%);font-size:44px}
+.open .lidflat{transform:translateY(-34px) scaleY(.15);opacity:0;pointer-events:none}
+#album{position:absolute;bottom:106px;left:50%;transform:translateX(-50%);z-index:3;border:0;background:none;padding:0;cursor:pointer;font:inherit}
+#album .pal{display:block;width:70px;height:50px;border-radius:8px;background:linear-gradient(135deg,#f6c3a0,#c98a4b 50%,#e8338a);box-shadow:0 4px 10px #0003;font-size:28px;line-height:50px;text-align:center;margin:0 auto}
+#album em{display:block;font-style:normal;font-size:11px;font-weight:700;background:#fff;color:var(--d);padding:4px 10px;border-radius:14px;margin-bottom:6px;white-space:nowrap;box-shadow:0 2px 8px #0002}
+#fx{position:fixed;inset:0;pointer-events:none;z-index:1}
+#top{position:fixed;inset:0;pointer-events:none;z-index:50}
+.b{position:absolute;width:34px;height:44px}
+.b i{display:block;width:100%;height:100%;border-radius:50% 50% 50% 50%/58% 58% 42% 42%;animation:bob 2.4s ease-in-out infinite alternate;box-shadow:inset -6px -6px 10px #0002,inset 5px 5px 8px #fff6}
+@keyframes bob{to{transform:translateY(-12px) rotate(4deg)}}
+.c{position:fixed;top:0;width:8px;height:12px}
+.h{position:fixed;top:0;font-size:22px}
+#modal{position:fixed;inset:0;z-index:20;display:none;align-items:center;justify-content:center;background:#ff5fa255;backdrop-filter:blur(4px)}
+#modal.on{display:flex}
+.sheet{position:relative;width:min(90vw,340px);background:#fff;border-radius:20px;padding:18px 16px;box-shadow:0 10px 40px #c2185b55;text-align:center}
+.sheet h2{margin:0 0 4px;font:20px Pacifico,cursive;color:var(--d)}
+.sheet small{display:block;margin-bottom:12px;opacity:.8}
+#x{position:absolute;right:10px;top:10px;width:28px;height:28px;border:0;border-radius:50%;background:#ffe0ee;color:var(--d);font-size:16px;cursor:pointer}
+#grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:10px;border:2px solid #ff9cc7;border-radius:14px;background:#fff0f7}
+.t{aspect-ratio:1;perspective:500px;cursor:pointer}
+.in{position:relative;width:100%;height:100%;transition:transform .6s;transform-style:preserve-3d}
+.flip .in{transform:rotateY(180deg)}
+.f,.k{position:absolute;inset:0;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:26px;backface-visibility:hidden;overflow:hidden}
+.k{transform:rotateY(180deg)}
+.k img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.k span{opacity:.5}
+#msg{margin:12px 0;padding:10px;border:2px solid #ffc2dc;border-radius:12px;font-weight:700;font-size:14px}
+#rain{border:0;border-radius:20px;padding:10px 18px;background:var(--p);color:#fff;font:700 13px Quicksand,sans-serif;cursor:pointer}
+</style>
+</head>
+<body>
+<div id="hint">Taabo sanduuqa si aad u furto 🎁</div>
+<div id="fx"></div><div id="top"></div>
+<div id="stage">
+  <div class="box" id="box">
+    <div class="lid3d"><div class="card">
+      <svg viewBox="0 0 100 90"><path d="M50 85C10 55 0 35 0 22 0 8 12 0 25 0c11 0 20 6 25 14C55 6 64 0 75 0c13 0 25 8 25 22 0 13-10 33-50 63z" fill="#fff" stroke="#ffb3d3" stroke-width="2"/></svg>
+      <p>Happy Birthday<br>Shadia ❤️🎉</p>
+    </div></div>
+    <div class="back"></div>
+    <button id="album"><em>Taabo si aad u furto albumka ✨</em><span class="pal">💄</span></button>
+    <div class="front"><div class="rib"></div><b>🎀</b></div>
+    <div class="lidflat"><div class="rib"></div><b>🎀</b></div>
+  </div>
+</div>
+
+<div id="modal"><div class="sheet">
+  <button id="x">✕</button>
+  <h2>Lovely Album 💗</h2>
+  <small>Taabo sawir kasta si aad u aragto</small>
+  <div id="grid"></div>
+  <div id="msg">Taabo sawir kasta 💕</div>
+  <button id="rain">✨ Soo daa Wadnayaal ✨</button>
+</div></div>
+
+<script>
+const $=s=>document.querySelector(s);
+// ====== SAWIRADAADA HAL DHIB KU BEDDEL ======
+const PHOTOS=['Screenshot_20261012-021803.jpg','a74adc70eb0c405081d368e913c03e27.jpg','Screenshot_20261019-135211.jpg','IMG-20261029-WA0026.jpg','Screenshot_20261019-141745.jpg','1794161692933.jpg'];
+const MSG=['Waxaad tahay qof gaar ah 💖','Dhoolacadeyntaadu waa iftiin ✨','Boqorad ayaad tahay 👑','Maalin dhalasho oo wacan! 🌷','Saaxiib wanaagsan ayaad tahay 🧸','Waxaad mudan tahay wax kasta oo qurux badan 💄'];
+const EMO=['🌸','✨','👑','🌷','🧸','💄'];
+const COL=['#ffc2dc','#f3dca0','#8a5a2b','#e2d6e0','#b9772f','#e8338a'];
+const grid=$('#grid');
+EMO.forEach((e,i)=>{
+  const t=document.createElement('div');t.className='t';
+  t.innerHTML='<div class="in"><div class="f" style="background:'+COL[i]+'">'+e+'</div><div class="k" style="background:'+COL[i]+'"><img alt=""><span>'+e+'</span></div></div>';
+  const im=t.querySelector('img'),nm=PHOTOS[i];
+  const c=/\.\w+$/.test(nm)?[nm]:['jpg','jpeg','JPG','JPEG','png','PNG','webp'].map(x=>nm+'.'+x);
+  let k=0;
+  im.onerror=()=>{if(k<c.length-1){k++;im.src=c[k]}else im.remove()};
+  im.src=c[0];
+  t.onclick=()=>{t.classList.toggle('flip');$('#msg').textContent=MSG[i]};
+  grid.appendChild(t);
+});
+
+let opened=false;
+$('#box').onclick=()=>{
+  if(opened)return;opened=true;
+  $('#stage').classList.add('open');
+  $('#hint').textContent='Hadda taabo albumka 💄';
+  setTimeout(burst,450);
+};
+$('#album').onclick=e=>{e.stopPropagation();if(opened)$('#modal').classList.add('on')};
+$('#x').onclick=()=>$('#modal').classList.remove('on');
+$('#rain').onclick=()=>rain(45,null);
+
+function burst(){
+  const r=$('#box').getBoundingClientRect(),cx=r.left+r.width/2,cy=r.top+60;
+  const cols=['#e53950','#ff8fb8','#f4f0f2','#b9a24a','#a47be8','#ff5fa2'];
+  const spread=Math.min(innerWidth*.85,320),up=Math.min(300,r.top+80);
+  for(let i=0;i<16;i++){
+    const b=document.createElement('div');b.className='b';
+    const x=cx-17+(Math.random()-.5)*spread,y=Math.max(30,cy-40-Math.random()*up);
+    b.style.left=x+'px';b.style.top=y+'px';
+    b.innerHTML='<i style="background:'+cols[i%6]+';animation-delay:'+(-Math.random()*2)+'s"></i>';
+    $('#fx').appendChild(b);
+    b.animate([{transform:'translate('+(cx-x)+'px,'+(cy-y)+'px) scale(.2)',opacity:0},{opacity:1,offset:.25},{transform:'none',opacity:1}],{duration:1300+Math.random()*700,delay:i*60,easing:'cubic-bezier(.2,.9,.3,1)',fill:'backwards'});
+  }
+  rain(60,['#ff5fa2','#ffd84d','#7ad7ff','#a47be8','#ffffff','#ff8a3d']);
+}
+function rain(n,cols){
+  for(let i=0;i<n;i++){
+    const s=document.createElement('span');
+    if(cols){s.className='c';s.style.background=cols[i%cols.length]}else{s.className='h';s.textContent='💖'}
+    s.style.left=Math.random()*100+'vw';
+    $('#top').appendChild(s);
+    const a=s.animate([{transform:'translateY(-30px) rotate(0)'},{transform:'translateY('+(innerHeight+40)+'px) rotate('+(Math.random()*720)+'deg)'}],{duration:2500+Math.random()*2500,delay:Math.random()*1200,easing:'linear',fill:'backwards'});
+    a.onfinish=()=>s.remove();
+  }
+}
+</script>
+</body>
+</html>
 
