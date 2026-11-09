@@ -152,9 +152,10 @@ html,body{height:100%;margin:0;overflow:hidden}
   <div id="letter"><div class="paper">
     <div class="fr">👦🤝👧</div>
     <h3>Friendship 💛</h3>
-    <p><b>Shadia,</b> saaxiibtay qaaliga ah 🌷</p>
-    <p>Maalin dhalasho oo aad u wacan! 🎂 Ilaah ha ku siiyo caafimaad, farxad iyo guul.</p>
-    <p>Saaxiibtinimadeenu waa mid aan aad ugu faraxsanahay. Waxaad tahay qof wanaagsan, dhoolacadeyntaaduna waa iftiin. Waxaan rajaynayaa inay saaxiibtinimadayadu sii socoto mar walba.</p>
+    <p>Dhalasho wacan saaxibday.</p>
+    <p>Inkasto aanay gaadhin malintadi waxan kugu habalyaynaya maalintda quruxda badan waa Malin aad uqurux badan malinta aad dhalatay waxn ku rajaynaya sanado kalo badan oo barwaqo khayr iyo faraxd wata Inu Alle kaga dhigo.</p>
+    <p>Waxad Tahay saxbka adunka ugu fiican qof adigo kala uma qalmo xaladaha qaar. Hadii Alle ii ogalan laha inan nolasha qof sameeyo waxan samayn laha taada waxanan dhigo laha passion ku munasiba. Anyway, happy birthday 🎂</p>
+    <p>Shadia shidan inshallah waa ino maalintada 🎉❤️.</p>
     <p class="sg">Saaxiibkaa,<br>Cabdisalaam</p>
     <button id="lgo">Gudbi 🎁</button>
   </div></div>
@@ -291,31 +292,4 @@ function rain(n,cols){
 (function(){
   let st='';
   for(let i=0;i<45;i++)st+='<i class="st" style="left:'+(Math.random()*100)+'%;top:'+(Math.random()*75)+'%;animation-delay:'+(-Math.random()*2.5)+'s"></i>';
-  $('#stars').innerHTML=st;
-  const T=[[85,185],[117,135],[150,105],[183,135],[215,185],[133,200],[167,200]];
-  let s='<defs><linearGradient id="pg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffb3d9"/><stop offset="1" stop-color="#d94a93"/></linearGradient></defs>';
-  T.forEach((p,i)=>{
-    s+='<path class="stem" pathLength="1" style="--t:'+(1.2+i)+'s" d="M150 300Q'+((150+p[0])/2)+' '+((300+p[1])/2+25)+' '+p[0]+' '+p[1]+'"/>';
-  });
-  s+='<g class="pp" style="animation-delay:.6s"><ellipse cx="108" cy="228" rx="9" ry="30" fill="#3fae66" transform="rotate(-40 108 228)"/><ellipse cx="192" cy="228" rx="9" ry="30" fill="#3fae66" transform="rotate(40 192 228)"/></g>';
-  T.forEach((p,i)=>{
-    const d=1.2+i+.8,k=i==2?1.15:1;
-    s+='<g transform="translate('+p[0]+' '+p[1]+') scale('+k+')"><g class="hd" style="--t:'+d+'s">'
-      +'<path class="pl" d="M-4 0C-24 -4 -26 -28 -14 -46C-10 -30 0 -18 -4 0Z" fill="#ff8cc0"/>'
-      +'<path class="pr" d="M4 0C24 -4 26 -28 14 -46C10 -30 0 -18 4 0Z" fill="#ff8cc0"/>'
-      +'<path d="M0 0C-14 -4 -16 -30 0 -50C16 -30 14 -4 0 0Z" fill="#ff4f9d"/>'
-      +'<path d="M-3 -8C-8 -20 -5 -32 0 -42" stroke="#ffd0e6" stroke-width="2" fill="none" opacity=".6"/></g></g>';
-  });
-  s+='<g class="pp"><path d="M92 232L208 232L168 338L132 338Z" fill="url(#pg)"/><path d="M92 232L150 262L208 232Z" fill="#ff9ccb" opacity=".9"/><path d="M150 262L168 338L132 338Z" fill="#c63d86" opacity=".35"/><circle cx="150" cy="262" r="7" fill="#fff"/></g>';
-  $('#bsv').innerHTML=s;
-  setTimeout(()=>$('#envb').classList.add('show'),9800);
-  $('#envb').onclick=()=>{$('#envb').classList.remove('show');$('#letter').classList.add('on')};
-  $('#lgo').onclick=()=>{
-    const f=$('#flowerScene');
-    f.style.transition='opacity .5s';f.style.opacity=0;
-    setTimeout(()=>{f.style.display='none';$('#giftScene').classList.add('on')},500);
-  };
-})();
-</script>
-</body>
-</html>
+  $('#stars').innerH
